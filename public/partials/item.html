@@ -1,0 +1,56 @@
+<div class="page-header">
+  <h1>查看投票</h1>
+</div>
+<div class="well well-lg">
+  <strong>问题</strong><br>{{vote.question}}
+</div>
+<div ng-hide="vote.userVoted">
+  <p class="lead">请选择：</p>
+  <form role="form" ng-submit="dovote()">
+	<div ng-repeat="choice in vote.choices" class="radio">
+	  <label>
+		<input type="radio" name="choice" ng-model="vote.userVote" value="{{choice._id}}" />
+		{{choice.text}}
+	  </label>
+	</div>
+	<p><hr></p>
+	<div class="row">
+	  <div class="col-xs-6">
+		<a href="#/vote" class="btn btn-default" role="button">
+		  <span class="glyphicon glyphicon-arrow-left"></span> 返回投票列表 </a>
+	  </div>
+	  <div class="col-xs-6">
+		<button class="btn btn-primary pull-right" type="submit"> 投票 &raquo;</button>
+	  </div>
+	</div>
+  </form>
+</div>
+<div ng-show="vote.userVoted">
+  <table class="result-table">
+	<tbody>
+	  <tr ng-repeat="choice in vote.choices">
+		<td>{{choice.text}}</td>
+		<td>
+		  <table style="width: {{choice.votes.length/vote.totalVotes*100}}%;">
+			<tr>
+			  <td>{{choice.votes.length}}</td>
+			</tr>
+		  </table>
+		</td>
+	  </tr>
+	</tbody>
+  </table>
+  <p>
+	<em>截止目前总票数 - {{vote.totalVotes}}.
+	  <span ng-show="vote.userChoice">
+		你选择的是 - <strong>{{vote.userChoice.text}}</strong>。
+	  </span>
+	</em>
+  </p>
+  <p><hr></p>
+  <p><a href="#/vote" class="btn btn-default" role="button">
+	  <span class="glyphicon glyphicon-arrow-left"></span>
+	  返回投票列表
+  </a></p>
+</div>
+<p>&nbsp;</p>

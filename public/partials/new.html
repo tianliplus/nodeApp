@@ -1,0 +1,35 @@
+<div class="page-header">
+  <h1>创建新投票</h1>
+</div>
+<form role="form" ng-submit="createVote()">
+  <div class="form-group">
+	<label>问题</label>
+	<input type="text" ng-model="vote.question" class="form-control" id="voteQuestion" placeholder="输入投票问题" />
+  </div>
+  <div class="form-group">
+	<label>选项</label>
+	<div ng-repeat="choice in vote.choices">
+	  <input type="text" ng-model="choice.text" class="form-control" placeholder="输入选项{{$index+1}}" />
+	</div>
+  </div>
+  <div class="row">
+	<div class="col-xs-12">
+	  <button type="button" class="btn btn-default" ng-click="addChoice()">
+		<span class="glyphicon glyphicon-plus"></span>添加新项
+	  </button>
+	</div>
+  </div>
+  <p><hr></p>
+  <div class="row">
+	<div class="col-xs-6">
+	  <a href="#/vote" class="btn btn-default" role="button">
+		<span class="glyphicon glyphicon-arrow-left"></span>返回投票列表</a>
+	</div>
+	<div class="col-xs-6">
+	  <button class="btn btn-primary pull-right" type="submit">
+		创建投票 &raquo;
+	  </button>
+	</div>
+  </div>
+  <p>&nbsp;</p>
+</form>
