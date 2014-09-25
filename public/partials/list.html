@@ -15,7 +15,7 @@
 <div class="row"><div class="col-xs-12"><hr></div></div>
 <div class="row" ng-switch on="vote.length">
   <ul ng-switch-when="0">
-	<li><em>还没有人发起投票，要不要<a href="#/new">创建一个</a>?</li>
+	<li><em>还没有人发起投票，要不要<a href="#/new">创建一个</a>?</em></li>
   </ul>
   <ul ng-switch-default>
 	<li ng-repeat="vote in votes | filter:query">
